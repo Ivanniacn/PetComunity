@@ -1,0 +1,10 @@
+{% extends 'mi_app/base.html' %}
+{% block title %}Mascotas{% endblock %}
+{% block content %}
+<h2>Lista de Mascotas</h2>
+<ul>
+  {% for m in mascotas %}
+    <li>{{ m.nombre }} - {{ m.especie }} - Edad: {{ m.edad }} - Dueño: {{ m.dueño.nombre }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

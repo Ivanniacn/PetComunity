@@ -1,0 +1,10 @@
+{% extends 'mi_app/base.html' %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+<h2>Lista de Productos</h2>
+<ul>
+  {% for p in productos %}
+    <li>{{ p.nombre }} - ${{ p.precio }}<br>{{ p.descripcion }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

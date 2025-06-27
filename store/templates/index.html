@@ -1,0 +1,487 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion Veterinaria</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>🐶 PET COMMUNITY 🐱</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#inicio">Farmacia</a></li>
+
+        <li>
+          <a href="#">Servicios</a>
+          <ul class="submenu">
+            <li><a href="#horas">Horario de atencion</a></li>
+            <li><a href="#medicos">Médicos Disponibles</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Cuenta</a>
+          <ul class="submenu">
+            <li><a href="#login">Iniciar Sesión</a></li>
+            <li><a href="#registro">Registrarse</a></li>
+          </ul>
+        </li>
+        <li><a href="#adopcion">Blog Adopcion</a></li>
+       
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+  
+
+    <section id="inicio">
+     <h2 id="inicio">🐾 Bienvenidos a Pet Community 🐾</h2>
+      <p>El unico portal que te ofrece todo en uno en servicio para mascotas</p>
+    </section>
+<section id="farmacia"> 
+  
+  <h2>🧴 Farmacia Veterinaria</h2>
+  <div class="carrusel-farmacia">
+    <button class="prev">&#10094;</button>
+    <div class="contenedor-productos">
+      <div class="producto">
+  <img src="https://files.catbox.moe/0jbot5.jpg" alt="Producto 1">
+  <p>Antipulgas</p>
+  <span class="precio">$12.000</span>
+  <button class="boton-carrito" onclick="location.href='carrito.html'">Añadir al carrito</button>
+</div>
+
+      <div class="producto">
+        <img src="imagenes/med2.jpg" alt="Producto 2">
+        <p>Vitaminas</p>
+        <span class="precio">$9.500</span>
+      </div>
+      <div class="producto">
+        <img src="https://files.catbox.moe/2kkwa8.jpg" alt="Producto 2">
+        <p>Vitaminas</p>
+        <span class="precio">$9.500</span>
+      </div>
+      <div class="producto">
+        <img src="https://files.catbox.moe/i4q2lq.jpg" alt="Producto 3">
+        <p>Shampoo</p>
+        <span class="precio">$15.000</span>
+      </div>
+      <div class="producto">
+        <img src="https://files.catbox.moe/5cv5ph.jpg" alt="Producto 4">
+        <p>Antibiótico</p>
+        <span class="precio">$18.200</span>
+      </div>
+      <div class="producto">
+        <img src="https://files.catbox.moe/iq3ioq.jpg" alt="Producto 5">
+        <p>Desparasitante</p>
+        <span class="precio">$7.800</span>
+       
+        
+      </div>
+    </div>
+    <button class="next">&#10095;</button>
+    
+  </div>
+</section>
+<section id="horas">
+  <h2>Horario de atencion</h2>
+  <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 2:00 PM</p>
+
+ <div class="calendario" style="
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+">
+  <label for="fecha">Selecciona una fecha:</label><br>
+  <input type="date" id="fecha" style="margin-top: 10px; padding: 6px;"><br>
+
+  <div id="horasDisponibles" style="margin-top: 20px;">
+    <h3>Horas disponibles:</h3>
+    <ul id="listaHoras" style="list-style: none; padding: 0;">
+      <li>09:00 AM</li>
+      <li>10:00 AM</li>
+    </ul>
+  </div>
+
+  <button id="botonAgendar" style="margin-top: 20px; padding: 10px 20px;">Agendar hora</button>
+  <p id="mensajeAgendado" style="margin-top: 10px; color: green;"></p>
+</div>
+
+</section>
+
+<script>
+  document.getElementById("botonAgendar").addEventListener("click", () => {
+    const fechaSeleccionada = document.getElementById("fecha").value;
+    if (fechaSeleccionada) {
+      document.getElementById("mensajeAgendado").textContent = "✅ Su hora ha sido registrada";
+    } else {
+      document.getElementById("mensajeAgendado").textContent = "⚠️ Por favor seleccione una fecha antes de agendar.";
+      document.getElementById("mensajeAgendado").style.color = "red";
+    }
+  });
+</script>
+
+
+<script>
+  document.getElementById("botonAgendar").addEventListener("click", () => {
+    const fechaSeleccionada = document.getElementById("fecha").value;
+    if (fechaSeleccionada) {
+      document.getElementById("mensajeAgendado").textContent = "✅ Su hora ha sido registrada";
+    } else {
+      document.getElementById("mensajeAgendado").textContent = "⚠️ Por favor seleccione una fecha antes de agendar.";
+      document.getElementById("mensajeAgendado").style.color = "red";
+    }
+  });
+</script>
+
+<section id="medicos" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+  <!-- Imagen del médico -->
+  <div style="flex: 1 1 300px; text-align: center;">
+    <img src="https://files.catbox.moe/7by5xx.jpg" alt="Médico Veterinario" style="max-width: 300px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <p style="margin-top: 10px;"><strong>Dr. Jacobo Gringberg</strong><br>Director Pet Community y Cirujano Veterinario</p>
+  </div>
+
+  <!-- Lista de médicos -->
+  <div style="flex: 2 1 400px;">
+    <h2>Médicos Disponibles</h2>
+    <ul>
+      <li>Dr. Ana Ramírez - Especialista en gatos</li>
+      <li>Dr. Carlos Pérez - Cirujano Veterinario</li>
+      <li>Dra. Lucia Fernández - Atención general</li>
+    </ul>
+    <button class="boton-agendar">Agendar una hora</button>
+  </div>
+</section>
+
+
+    <script>
+  document.getElementById("formLogin").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const usuarioInput = document.getElementById("usuario").value.trim();
+    const claveInput = document.getElementById("clave").value.trim();
+    const mensajeLogin = document.getElementById("mensajeLogin");
+
+    if (!usuarioInput || !claveInput) {
+      mensajeLogin.textContent = "Por favor, completa todos los campos.";
+      mensajeLogin.style.color = "red";
+      return;
+    }
+
+    const datosGuardados = localStorage.getItem("usuarioRegistrado");
+
+    if (!datosGuardados) {
+      mensajeLogin.textContent = "No hay usuarios registrados.";
+      mensajeLogin.style.color = "red";
+      return;
+    }
+
+    const usuario = JSON.parse(datosGuardados);
+
+    if ((usuarioInput === usuario.email || usuarioInput === usuario.nombre) && claveInput === usuario.password) {
+      mensajeLogin.textContent = "Inicio de sesión exitoso. ¡Bienvenido/a!";
+      mensajeLogin.style.color = "green";
+    } else {
+      mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
+      mensajeLogin.style.color = "red";
+    }
+
+    document.getElementById("formLogin").reset();
+  });
+</script>
+
+
+
+    <section id="registro">
+  <h2>Registrarse</h2>
+  <form id="formRegistro">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br>
+
+    <label for="email">Correo:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <button type="submit">Crear cuenta</button>
+  </form>
+  <p id="mensajeRegistro"></p>
+</section>
+<section id="login" style="max-width: 400px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+  <h2 style="text-align: center;">Iniciar Sesión</h2>
+  <form id="formLogin">
+    <label for="usuario">Correo o Nombre:</label>
+    <input type="text" id="usuario" name="usuario" required style="width: 100%; padding: 8px; margin: 8px 0;">
+
+    <label for="clave">Contraseña:</label>
+    <input type="password" id="clave" name="clave" required style="width: 100%; padding: 8px; margin: 8px 0;">
+
+    <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Entrar</button>
+  </form>
+  <p id="mensajeLogin" style="margin-top: 12px; text-align: center;"></p>
+</section>
+
+
+
+   <section id="adopcion">
+  <h2>BLOG DE ADOPCIÓN</h2>
+  <p>Aquí podrás ver y publicar peluditos en adopción RESPONSABLE.</p>
+
+  <button class="boton-adopcion">VER Y PUBLICAR</button>
+
+  <div class="galeria">
+    <!-- Aquí puedes poner tus imágenes -->
+    <img src="imagenes/1.jpg" alt="Perro en adopción">
+    <img src="imagenes/2.jpg" alt="Gato en adopción">
+    <img src="imagenes/3.jpg" alt="Otro perro en adopción">
+    <img src="imagenes/4.jpg" alt="Perro en adopción">
+    <img src="imagenes/5.jpg" alt="Perro en adopción">
+    <img src="imagenes/6.jpg" alt="Perro en adopción">
+    <img src="imagenes/7.jpg" alt="Perro en adopción">
+    <img src="imagenes/8.jpg" alt="Perro en adopción">
+    <img src="imagenes/9.jpg" alt="Perro en adopción">
+  </div>
+</section>
+
+  </main>
+
+ <footer style="background-color: #f4f4f4; padding: 30px; text-align: center; font-family: sans-serif; margin-top: 40px;">
+  <h3>Contáctanos</h3>
+  
+  <!-- Redes Sociales -->
+  <div style="margin-bottom: 20px;">
+    <a href="https://facebook.com" target="_blank" style="margin: 0 10px;">🐾 Facebook</a>
+    <a href="https://instagram.com" target="_blank" style="margin: 0 10px;">📸 Instagram</a>
+    <a href="https://wa.me/1234567890" target="_blank" style="margin: 0 10px;">💬 WhatsApp</a>
+     <a href="https://tiktok.com" target="_blank" style="margin: 0 10px;">🎵 Tiktok</a>
+  </div>
+
+  <!-- Teléfonos -->
+  <div style="background-color: #e0ecff; padding: 15px; margin: 20px auto; max-width: 100%; box-sizing: border-box;">
+    <p><strong>Teléfonos:</strong> +56 9 1234 5678 | +56 9 8765 4321</p>
+  </div>
+
+  <!-- Direcciones -->
+  <div style="background-color: #e0ecff; padding: 15px; margin: 20px auto; max-width: 100%; box-sizing: border-box;">
+    <p><strong>Sucursales:</strong><br>
+    📍 Av. Siempre Viva 123, Santiago<br>
+    📍 Calle de los Gatitos 456, Viña del Mar</p>
+  </div>
+
+  <!-- Newsletter -->
+  <form id="formNewsletter" style="margin-top: 20px;">
+    <label for="correoNewsletter"><strong>Recibe novedades por correo:</strong></label><br>
+    <input type="email" id="correoNewsletter" placeholder="Tu correo electrónico" required style="padding: 8px; width: 250px; margin-top: 8px;">
+    <button type="submit" style="padding: 8px 16px; margin-left: 8px;">Suscribirse</button>
+    <p id="mensajeNewsletter" style="margin-top: 10px; font-size: 14px;"></p>
+  </form>
+
+</footer>
+
+
+  <script>
+  document.getElementById("formRegistro").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const mensaje = document.getElementById("mensajeRegistro");
+
+    if (!nombre || !email || !password) {
+      mensaje.textContent = "Por favor, completa todos los campos.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!correoValido.test(email)) {
+      mensaje.textContent = "Ingresa un correo válido.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    if (password.length < 6) {
+      mensaje.textContent = "La contraseña debe tener al menos 6 caracteres.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    // Guardar usuario en localStorage
+    const usuario = {
+      nombre,
+      email,
+      password
+    };
+    localStorage.setItem("usuarioRegistrado", JSON.stringify(usuario));
+
+    mensaje.textContent = "¡Registro exitoso! Bienvenido/a, " + nombre + ".";
+    mensaje.style.color = "green";
+
+    document.getElementById("formRegistro").reset();
+  });
+</script>
+<!-- Asistente Virtual -->
+<div id="asistenteVirtual">
+  <div class="mensaje">
+    👋 ¡Hola! ¿Necesitas ayuda con algo?
+  </div>
+</div>
+
+<style>
+  #asistenteVirtual {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 15px;
+    max-width: 250px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+<script>
+  const contenedor = document.querySelector('.contenedor-productos');
+  const next = document.querySelector('.next');
+  const prev = document.querySelector('.prev');
+  let scrollAmount = 0;
+
+  next.addEventListener('click', () => {
+    scrollAmount += 220;
+    if (scrollAmount > contenedor.scrollWidth - contenedor.clientWidth) {
+      scrollAmount = 0;
+    }
+    contenedor.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  prev.addEventListener('click', () => {
+    scrollAmount -= 220;
+    if (scrollAmount < 0) {
+      scrollAmount = contenedor.scrollWidth - contenedor.clientWidth;
+    }
+    contenedor.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  });
+</script>
+
+<script>
+  const listaHoras = document.getElementById("listaHoras");
+  const fechaInput = document.getElementById("fecha");
+
+  const horasSemana = [
+    "09:00 AM", "10:00 AM", "11:00 AM",
+    "12:00 PM", "02:00 PM", "03:00 PM",
+    "04:00 PM", "05:00 PM"
+  ];
+
+  const horasSabado = ["10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM"];
+
+  fechaInput.addEventListener("change", () => {
+    const fecha = new Date(fechaInput.value);
+    const dia = fecha.getDay(); // 0 = domingo, 6 = sábado
+
+    listaHoras.innerHTML = ""; // borra los ejemplos anteriores
+
+    if (dia === 0) {
+      listaHoras.innerHTML = "<li>Domingo: No hay atención médica</li>";
+    } else if (dia === 6) {
+      horasSabado.forEach(hora => {
+        const li = document.createElement("li");
+        li.textContent = hora;
+        listaHoras.appendChild(li);
+      });
+    } else {
+      horasSemana.forEach(hora => {
+        const li = document.createElement("li");
+        li.textContent = hora;
+        listaHoras.appendChild(li);
+      });
+    }
+  });
+</script>
+<script>
+  document.getElementById("formNewsletter").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const correo = document.getElementById("correoNewsletter").value.trim();
+    const mensaje = document.getElementById("mensajeNewsletter");
+
+    if (!correo) {
+      mensaje.textContent = "Por favor ingresa tu correo.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!correoValido.test(correo)) {
+      mensaje.textContent = "El correo no es válido.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    mensaje.textContent = "¡Gracias por suscribirte!";
+    mensaje.style.color = "green";
+    document.getElementById("formNewsletter").reset();
+  });
+</script>
+
+
+
+
+</body>
+</html>
+<script>
+  document.getElementById("formLogin").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const usuarioInput = document.getElementById("usuario").value.trim();
+    const claveInput = document.getElementById("clave").value.trim();
+    const mensajeLogin = document.getElementById("mensajeLogin");
+
+    if (!usuarioInput || !claveInput) {
+      mensajeLogin.textContent = "Por favor, completa todos los campos.";
+      mensajeLogin.style.color = "red";
+      return;
+    }
+
+    const datosGuardados = localStorage.getItem("usuarioRegistrado");
+
+    if (!datosGuardados) {
+      mensajeLogin.textContent = "No hay usuarios registrados.";
+      mensajeLogin.style.color = "red";
+      return;
+    }
+
+    const usuario = JSON.parse(datosGuardados);
+
+    if ((usuarioInput === usuario.email || usuarioInput === usuario.nombre) && claveInput === usuario.password) {
+      mensajeLogin.textContent = "Bienvenido Community Lover";
+      mensajeLogin.style.color = "green";
+    } else {
+      mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
+      mensajeLogin.style.color = "red";
+    }
+
+    document.getElementById("formLogin").reset();
+  });
+</script>

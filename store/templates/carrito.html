@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito de Compras | Pet Community</title>
+  <link rel="stylesheet" href="{% static 'carrito.css' %}">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #pasarela {
+      padding: 40px;
+      background-color: #f4f4f4;
+      border-top: 2px solid #ccc;
+      margin-top: 50px;
+    }
+    .form-pago input, .form-pago select, .form-pago button {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛒 Tu Carrito - 🐱 Pet Community 🐶</h1>
+  </header>
+
+  <main class="contenedor-carrito">
+    <div class="producto-carrito">
+      <img src="imagenes/med1.jpg" alt="Antipulgas">
+      <div class="info">
+        <h3>Antipulgas</h3>
+        <p>Precio: $12.000</p>
+        <label for="cantidad1">Cantidad:</label>
+        <input type="number" id="cantidad1" min="1" value="1">
+      </div>
+      <button class="btn-eliminar">Eliminar</button>
+    </div>
+
+    <div class="producto-carrito">
+      <img src="imagenes/med2.jpg" alt="Vitaminas">
+      <div class="info">
+        <h3>Vitaminas</h3>
+        <p>Precio: $9.500</p>
+        <label for="cantidad2">Cantidad:</label>
+        <input type="number" id="cantidad2" min="1" value="2">
+      </div>
+      <button class="btn-eliminar">Eliminar</button>
+    </div>
+
+    <div class="resumen-carrito">
+      <h2>Total: $31.000</h2>
+      <a href="#pasarela"><button class="btn-comprar">IR A PAGAR 🤑</button></a>
+    </div>
+  </main>
+
+  <!-- 🔽 SECCIÓN DE PAGO -->
+  <section id="pasarela">
+    <h2>💳 Pasarela de Pago</h2>
+    <form class="form-pago">
+      <label for="nombre">Nombre en la Tarjeta:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="numero">Número de Tarjeta:</label>
+      <input type="text" id="numero" maxlength="16" required>
+
+      <label for="fecha">Fecha de Expiración:</label>
+      <input type="month" id="fecha" required>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" maxlength="4" required>
+
+      <button type="submit">Pagar Ahora</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Pet Community</p>
+  </footer>
+</body>
+</html>

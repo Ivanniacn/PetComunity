@@ -1,0 +1,10 @@
+{% extends 'mi_app/base.html' %}
+{% block title %}Usuarios{% endblock %}
+{% block content %}
+<h2>Lista de Usuarios</h2>
+<ul>
+  {% for u in usuarios %}
+    <li>{{ u.nombre }} - {{ u.correo }} - Registrado el {{ u.fecha_registro }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

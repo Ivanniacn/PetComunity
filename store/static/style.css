@@ -1,0 +1,533 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e0f7fa; /* Pastel celeste muy claro */
+  color: #333;
+}
+
+/* Importamos una fuente moderna de Google Fonts, por ejemplo, 'Roboto' */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+p {
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente moderna 'Roboto' a todos los párrafos */
+    font-weight: 700; /* Hace que el texto del párrafo sea negrita (700 es un buen peso para negrita) */
+    color: #333; /* Un color de texto oscuro para buena legibilidad */
+    line-height: 1.6; /* Mejora la legibilidad con un buen espaciado entre líneas */
+}
+header {
+  background: rgba(88, 180, 174, 0.95);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background: rgba(58, 131, 112, 0.95);
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu > li > a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu > li:hover {
+  background-color: #2d6f5c;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #4eaa97;
+  list-style: none;
+  padding: 0;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu > li:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  padding: 10px 15px;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #3a8370;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label, form input, form button {
+  width: 100%;
+  max-width: 400px;
+}
+
+form label {
+  margin-top: 10px;
+  text-align: left;
+}
+
+form input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #58b4ae;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #3a8370;
+}
+
+#mensajeRegistro, #mensajeLogin {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.galeria img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(88, 180, 174, 0.95);
+  color: white;
+  margin-top: 50px;
+}
+
+p {
+  text-align: center; /* Centra el texto horizontalmente */
+  font-size: 1.1rem; /* Tamaño de fuente cómodo */
+  line-height: 1.6; /* Espaciado entre líneas */
+  color: #444; /* Color oscuro pero no negro para mayor legibilidad */
+  margin: 20px auto; /* Espaciado superior e inferior, centrado */
+  max-width: 600px; /* Limita el ancho para que no se vea muy extendido */
+  background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente si hay fondo decorativo */
+  padding: 15px 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.boton-adopcion {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background-color: #58b4ae;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.boton-adopcion:hover {
+  background-color: #3a8370;
+}
+
+.boton-agendar {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-agendar:hover {
+  background-color: #0097a7;
+}
+
+  #farmacia {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .carrusel-farmacia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .contenedor-productos {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 600px;
+    overflow: hidden;
+  }
+
+  .producto {
+    min-width: 200px;
+    margin: 0 10px;
+    text-align: center;
+  }
+
+  .producto img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .prev, .next {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: #4cae4c;
+  }
+
+.calendario {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.calendario input[type="date"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+#horasDisponibles {
+  margin-top: 10px;
+}
+
+#horasDisponibles ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#horasDisponibles li {
+  background-color: #d4edda;
+  margin-bottom: 5px;
+  padding: 6px;
+  border-radius: 5px;
+}
+footer {
+  background-color: #e8f0fe;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  margin-top: 40px;
+  border-top: 2px solid #ccc;
+}
+
+footer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #2b4c7e;
+}
+
+footer a {
+  text-decoration: none;
+  color: #2b4c7e;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #1a3055;
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+footer input[type="email"] {
+  padding: 10px;
+  width: 260px;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+footer button {
+  padding: 10px 18px;
+  background-color: #2b4c7e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+  background-color: #1a3055;
+}
+
+#mensajeNewsletter {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+
+/* Colores pastel y tipografía suave */
+:root {
+  --pastel-azul: #cde8f6;
+  --pastel-verde: #d3f6e5;
+  --pastel-rosado: #fbe0e6;
+  --pastel-amarillo: #fff4c2;
+  --pastel-gris: #f0f0f0;
+  --gris-oscuro: #4a4a4a;
+  --verde-suave: #7fc7a3;
+  --azul-suave: #90c9e8;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--pastel-gris);
+  margin: 0;
+  padding: 0;
+  color: var(--gris-oscuro);
+}
+
+header {
+  background-color: var(--azul-suave);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 5px solid var(--verde-suave);
+}
+
+h1, h2, h3 {
+  margin: 10px 0;
+}
+
+main.contenedor-carrito {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.producto-carrito {
+  display: flex;
+  align-items: center;
+  background-color: var(--pastel-verde);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.producto-carrito img {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.producto-carrito .info {
+  flex-grow: 1;
+}
+
+.producto-carrito input[type="number"],
+.producto-carrito input[type="text"] {
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-eliminar {
+  background-color: #ff9aa2;
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: #ff6f7d;
+}
+
+.resumen-carrito {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--pastel-amarillo);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-comprar {
+  background-color: var(--verde-suave);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-comprar:hover {
+  background-color: #66b08c;
+}
+
+form.form-nuevo-producto {
+  background-color: var(--pastel-rosado);
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+form.form-nuevo-producto input,
+form.form-nuevo-producto button {
+  padding: 8px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form.form-nuevo-producto button {
+  background-color: var(--azul-suave);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form.form-nuevo-producto button:hover {
+  background-color: #62a4cb;
+}
+
+#pasarela {
+  background-color: var(--pastel-azul);
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-top: 5px solid var(--verde-suave);
+  border-radius: 10px 10px 0 0;
+}
+
+form.form-pago {
+  max-width: 400px;
+  margin: auto;
+}
+
+form.form-pago input,
+form.form-pago select,
+form.form-pago button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form.form-pago button {
+  background-color: var(--verde-suave);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form.form-pago button:hover {
+  background-color: #66b08c;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--azul-suave);
+  color: white;
+  margin-top: 40px;
+}

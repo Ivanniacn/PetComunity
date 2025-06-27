@@ -1,0 +1,287 @@
+body {
+  font-family: sans-serif;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffcccb;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.contenedor-carrito {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.producto-carrito {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.producto-carrito img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-eliminar {
+  background-color: #ff6961;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: #e55b50;
+}
+
+.resumen-carrito {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.btn-comprar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-comprar:hover {
+  background-color: #45a049;
+}
+
+footer {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+/* ===== Estilo General ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2a7f8e;
+  margin: 40px 0 20px;
+}
+
+/* ===== Carrusel de Productos ===== */
+.carrusel-farmacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+button.prev,
+button.next {
+  background-color: #79c2d0;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: #5aa9b5;
+}
+
+/* ===== Estilo General ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2a7f8e;
+  margin: 40px 0 20px;
+}
+
+/* ===== Carrusel de Productos ===== */
+.carrusel-farmacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 95vw; /* Más ancho para evitar recortes */
+  margin: 0 auto;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+button.prev,
+button.next {
+  background-color: #79c2d0;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: #5aa9b5;
+}
+
+/* ===== Contenedor de Productos ===== */
+.contenedor-productos {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.producto {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+  min-width: 230px;
+  max-width: 250px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+}
+
+.producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain; /* evita recortes */
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.producto p {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #444;
+}
+
+.precio {
+  font-size: 1rem;
+  color: #2a7f8e;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ===== Botón Añadir al Carrito ===== */
+.boton-carrito {
+  background-color: #2a7f8e;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-carrito:hover {
+  background-color: #216674;
+}
+
+.producto img {
+  width: 100%;
+  height: auto; /* Se adapta a la imagen original */
+  object-fit: contain; /* evita recorte y distorsión */
+  aspect-ratio: 4 / 3; /* mantiene proporción similar entre imágenes */
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0; /* opcional para contraste si hay espacio vacío */
+}
+.producto {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.boton-carrito {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 10px; /* MÁS pequeño */
+  font-size: 14px; /* MÁS pequeño */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.boton-carrito:hover {
+  background-color: #218838;
+}
+
