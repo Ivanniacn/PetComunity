@@ -1,17 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mi App Django{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'mi_app/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'estilo.css' %}">
 </head>
 <body>
     <header>
         <h1>Mi CRUD en Django</h1>
         <nav>
             <a href="{% url 'usuarios' %}">Usuarios</a>
-            <a href="{% url 'productos' %}">Productos</a>
             <a href="{% url 'mascotas' %}">Mascotas</a>
+            <a href="{% url 'gestion' %}"></a>
         </nav>
     </header>
     <main>

@@ -2,26 +2,23 @@ from django.db import models
 import requests
 
 # Create your models here.
-class productos(models.Model):
-    id= models.CharField(max_length=4,primary_key=True)
-    nombreProducto= models.CharField(max_length=200)
-    urlProducto= models.CharField(max_length=1000)
-    precioProducto= models.IntegerField()
-    tipoProducto= models.CharField(max_length=50)
+
 from django.db import models
+
+class ProductoTienda(models.Model):
+    nombreProducto = models.CharField(max_length=100)
+    stock = models.IntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    imagen_url = models.URLField(blank=True, null=True)  # Nuevo campo
+
+    def __str__(self):
+        return self.nombreProducto
+
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
     correo = models.EmailField()
     fecha_registro = models.DateField(auto_now_add=True)
-
-    def __str__(self):
-        return self.nombre
-
-class Producto(models.Model):
-    nombre = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=8, decimal_places=2)
-    descripcion = models.TextField()
 
     def __str__(self):
         return self.nombre

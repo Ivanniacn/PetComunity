@@ -1,10 +1,86 @@
-{% extends 'mi_app/base.html' %}
-{% block title %}Usuarios{% endblock %}
-{% block content %}
-<h2>Lista de Usuarios</h2>
-<ul>
-  {% for u in usuarios %}
-    <li>{{ u.nombre }} - {{ u.correo }} - Registrado el {{ u.fecha_registro }}</li>
-  {% endfor %}
-</ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">Gestión de Usuarios</h2>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <form method="POST" class="row g-3">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <label for="id_nombre" class="form-label">Nombre</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_correo" class="form-label">Correo</label>
+                        {{ form.correo }}
+                    </div>
+                    <input type="hidden" name="usuario_id" id="usuario_id">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success me-2">Guardar Usuario</button>
+                        <button type="button" onclick="resetFormulario()" class="btn btn-secondary">Nuevo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Lista de Usuarios</h5>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Fecha Registro</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in usuarios %}
+                        <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.nombre }}</td>
+                            <td>{{ u.correo }}</td>
+                            <td>{{ u.fecha_registro }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1"
+                                    onclick="cargarUsuario('{{ u.id }}', '{{ u.nombre }}', '{{ u.correo }}')">
+                                    Editar
+                                </button>
+                                <a href="?eliminar={{ u.id }}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center">No hay usuarios registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cargarUsuario(id, nombre, correo) {
+            document.getElementById('id_nombre').value = nombre;
+            document.getElementById('id_correo').value = correo;
+            document.getElementById('usuario_id').value = id;
+        }
+
+        function resetFormulario() {
+            document.getElementById('id_nombre').value = '';
+            document.getElementById('id_correo').value = '';
+            document.getElementById('usuario_id').value = '';
+        }
+    </script>
+</body>
+</html>
