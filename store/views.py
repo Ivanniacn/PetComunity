@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .templates import *
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
@@ -10,6 +11,61 @@ def home(request):
 
 def carrito(request):
     return render(request, 'carrito.html')
+
+def citas(request):
+    veterinarios = Veterinario.objects.all()
+    return render(request, 'citasMedicas.html', {'veterinarios': veterinarios})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        correo = request.POST.get('correo')
+        contrasenia = request.POST.get('contrasenia')
+
+        try:
+            usuario = userMascota.objects.get(correo=correo, contrasenia=contrasenia)
+            request.session['usuario_id'] = usuario.id  # Guardar ID en sesión
+            request.session['usuario_nombre'] = usuario.nombre
+            messages.success(request, f"Bienvenido, {usuario.nombre}")
+            return redirect('home')  # Cambia esto por la ruta de inicio
+        except userMascota.DoesNotExist:
+            messages.error(request, "Correo o contraseña incorrectos")
+    
+    return render(request, 'login.html')
+
+def logout_view(request):
+    request.session.flush()  # Borra toda la sesión
+    return redirect('home')  # O redirige al home si prefieres
+
+
+def registro_view(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        correo = request.POST.get('correo')
+        contrasenia = request.POST.get('contrasenia')
+        confirmar_contrasenia = request.POST.get('confirmar_contrasenia')
+
+        # Verificar que las contraseñas coincidan
+        if contrasenia != confirmar_contrasenia:
+            messages.error(request, "Las contraseñas no coinciden.")
+            return render(request, 'registro.html')
+
+        # Verificar si el correo ya está registrado
+        if userMascota.objects.filter(correo=correo).exists():
+            messages.error(request, "Este correo ya está registrado.")
+            return render(request, 'registro.html')
+
+        # Crear nuevo usuario
+        nuevo_usuario = userMascota(
+            nombre=nombre,
+            correo=correo,
+            contrasenia=contrasenia  # En producción, se debería encriptar
+        )
+        nuevo_usuario.save()
+
+        messages.success(request, "Registro exitoso. Ahora puedes iniciar sesión.")
+        return redirect('login')  # Asegúrate de tener una vista de login
+    return render(request, 'registro.html')
 
 def productos(request):
     productos = ProductoTienda.objects.all()
@@ -156,3 +212,43 @@ def lista_productos(request):
         return redirect('lista_productos')
 
     return render(request, 'productos.html', {'productos': productos, 'form': form})
+
+
+
+def agendar_cita(request):
+    if 'usuario_id' not in request.session:
+        messages.error(request, "Debes iniciar sesión para agendar una cita.")
+        return redirect('login')
+
+    propietario = userMascota.objects.get(id=request.session['usuario_id'])
+
+    if request.method == 'POST':
+        nombre_mascota = request.POST.get('nombre_mascota')
+        tipo_mascota = request.POST.get('tipo_mascota')
+        fecha = request.POST.get('fecha')
+        hora = request.POST.get('hora')
+        motivo = request.POST.get('motivo', '')
+        veterinario_id = request.POST.get('veterinario')
+
+        veterinario = Veterinario.objects.get(id=veterinario_id)
+
+        Cita.objects.create(
+            propietario=propietario,
+            nombre_mascota=nombre_mascota,
+            tipo_mascota=tipo_mascota,
+            fecha=fecha,
+            hora=hora,
+            motivo=motivo,
+            veterinario=veterinario
+        )
+
+        messages.success(request, "¡Cita agendada exitosamente!")
+        return redirect('agendar_cita')
+
+    veterinarios = Veterinario.objects.all()
+    citas_usuario = Cita.objects.filter(propietario=propietario).order_by('-fecha', '-hora')
+
+    return render(request, 'citasMedicas.html', {
+        'veterinarios': veterinarios,
+        'citas_usuario': citas_usuario
+    })

@@ -13,23 +13,17 @@
     <nav>
       <ul class="menu">
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#inicio">Farmacia</a></li>
+        <li><a href="{% url 'productos' %}">Farmacia</a></li>
 
-        <li>
-          <a href="#">Servicios</a>
-          <ul class="submenu">
-            <li><a href="#horas">Horario de atencion</a></li>
-            <li><a href="#medicos">Médicos Disponibles</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Cuenta</a>
-          <ul class="submenu">
-            <li><a href="#login">Iniciar Sesión</a></li>
-            <li><a href="#registro">Registrarse</a></li>
-          </ul>
-        </li>
+        <li><a href="{% url 'agendar_cita' %}">Agendar Hora Veterinaria</a></li>
         <li><a href="#adopcion">Blog Adopcion</a></li>
+        {% if request.session.usuario_id %}
+            <li><a href="#">Bienvenido, {{ request.session.usuario_nombre }}</a></li>
+            <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            <li><a href="{% url 'registro' %}">Registrarse</a></li>
+        {% endif %}
        
         
       </ul>
@@ -43,194 +37,6 @@
      <h2 id="inicio">🐾 Bienvenidos a Pet Community 🐾</h2>
       <p>El unico portal que te ofrece todo en uno en servicio para mascotas</p>
     </section>
-<section id="farmacia"> 
-  
-  <h2>🧴 Farmacia Veterinaria</h2>
-  <div class="carrusel-farmacia">
-    <button class="prev">&#10094;</button>
-    <div class="contenedor-productos">
-      <div class="producto">
-  <img src="https://files.catbox.moe/0jbot5.jpg" alt="Producto 1">
-  <p>Antipulgas</p>
-  <span class="precio">$12.000</span>
-  <button class="boton-carrito" onclick="location.href='carrito.html'">Añadir al carrito</button>
-</div>
-
-      <div class="producto">
-        <img src="imagenes/med2.jpg" alt="Producto 2">
-        <p>Vitaminas</p>
-        <span class="precio">$9.500</span>
-      </div>
-      <div class="producto">
-        <img src="https://files.catbox.moe/2kkwa8.jpg" alt="Producto 2">
-        <p>Vitaminas</p>
-        <span class="precio">$9.500</span>
-      </div>
-      <div class="producto">
-        <img src="https://files.catbox.moe/i4q2lq.jpg" alt="Producto 3">
-        <p>Shampoo</p>
-        <span class="precio">$15.000</span>
-      </div>
-      <div class="producto">
-        <img src="https://files.catbox.moe/5cv5ph.jpg" alt="Producto 4">
-        <p>Antibiótico</p>
-        <span class="precio">$18.200</span>
-      </div>
-      <div class="producto">
-        <img src="https://files.catbox.moe/iq3ioq.jpg" alt="Producto 5">
-        <p>Desparasitante</p>
-        <span class="precio">$7.800</span>
-       
-        
-      </div>
-    </div>
-    <button class="next">&#10095;</button>
-    
-  </div>
-</section>
-<section id="horas">
-  <h2>Horario de atencion</h2>
-  <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 2:00 PM</p>
-
- <div class="calendario" style="
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  background-color: #f9f9f9;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-">
-  <label for="fecha">Selecciona una fecha:</label><br>
-  <input type="date" id="fecha" style="margin-top: 10px; padding: 6px;"><br>
-
-  <div id="horasDisponibles" style="margin-top: 20px;">
-    <h3>Horas disponibles:</h3>
-    <ul id="listaHoras" style="list-style: none; padding: 0;">
-      <li>09:00 AM</li>
-      <li>10:00 AM</li>
-    </ul>
-  </div>
-
-  <button id="botonAgendar" style="margin-top: 20px; padding: 10px 20px;">Agendar hora</button>
-  <p id="mensajeAgendado" style="margin-top: 10px; color: green;"></p>
-</div>
-
-</section>
-
-<script>
-  document.getElementById("botonAgendar").addEventListener("click", () => {
-    const fechaSeleccionada = document.getElementById("fecha").value;
-    if (fechaSeleccionada) {
-      document.getElementById("mensajeAgendado").textContent = "✅ Su hora ha sido registrada";
-    } else {
-      document.getElementById("mensajeAgendado").textContent = "⚠️ Por favor seleccione una fecha antes de agendar.";
-      document.getElementById("mensajeAgendado").style.color = "red";
-    }
-  });
-</script>
-
-
-<script>
-  document.getElementById("botonAgendar").addEventListener("click", () => {
-    const fechaSeleccionada = document.getElementById("fecha").value;
-    if (fechaSeleccionada) {
-      document.getElementById("mensajeAgendado").textContent = "✅ Su hora ha sido registrada";
-    } else {
-      document.getElementById("mensajeAgendado").textContent = "⚠️ Por favor seleccione una fecha antes de agendar.";
-      document.getElementById("mensajeAgendado").style.color = "red";
-    }
-  });
-</script>
-
-<section id="medicos" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
-  <!-- Imagen del médico -->
-  <div style="flex: 1 1 300px; text-align: center;">
-    <img src="https://files.catbox.moe/7by5xx.jpg" alt="Médico Veterinario" style="max-width: 300px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-    <p style="margin-top: 10px;"><strong>Dr. Jacobo Gringberg</strong><br>Director Pet Community y Cirujano Veterinario</p>
-  </div>
-
-  <!-- Lista de médicos -->
-  <div style="flex: 2 1 400px;">
-    <h2>Médicos Disponibles</h2>
-    <ul>
-      <li>Dr. Ana Ramírez - Especialista en gatos</li>
-      <li>Dr. Carlos Pérez - Cirujano Veterinario</li>
-      <li>Dra. Lucia Fernández - Atención general</li>
-    </ul>
-    <button class="boton-agendar">Agendar una hora</button>
-  </div>
-</section>
-
-
-    <script>
-  document.getElementById("formLogin").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const usuarioInput = document.getElementById("usuario").value.trim();
-    const claveInput = document.getElementById("clave").value.trim();
-    const mensajeLogin = document.getElementById("mensajeLogin");
-
-    if (!usuarioInput || !claveInput) {
-      mensajeLogin.textContent = "Por favor, completa todos los campos.";
-      mensajeLogin.style.color = "red";
-      return;
-    }
-
-    const datosGuardados = localStorage.getItem("usuarioRegistrado");
-
-    if (!datosGuardados) {
-      mensajeLogin.textContent = "No hay usuarios registrados.";
-      mensajeLogin.style.color = "red";
-      return;
-    }
-
-    const usuario = JSON.parse(datosGuardados);
-
-    if ((usuarioInput === usuario.email || usuarioInput === usuario.nombre) && claveInput === usuario.password) {
-      mensajeLogin.textContent = "Inicio de sesión exitoso. ¡Bienvenido/a!";
-      mensajeLogin.style.color = "green";
-    } else {
-      mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
-      mensajeLogin.style.color = "red";
-    }
-
-    document.getElementById("formLogin").reset();
-  });
-</script>
-
-
-
-    <section id="registro">
-  <h2>Registrarse</h2>
-  <form id="formRegistro">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br>
-
-    <label for="email">Correo:</label>
-    <input type="email" id="email" name="email" required><br>
-
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required><br>
-
-    <button type="submit">Crear cuenta</button>
-  </form>
-  <p id="mensajeRegistro"></p>
-</section>
-<section id="login" style="max-width: 400px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
-  <h2 style="text-align: center;">Iniciar Sesión</h2>
-  <form id="formLogin">
-    <label for="usuario">Correo o Nombre:</label>
-    <input type="text" id="usuario" name="usuario" required style="width: 100%; padding: 8px; margin: 8px 0;">
-
-    <label for="clave">Contraseña:</label>
-    <input type="password" id="clave" name="clave" required style="width: 100%; padding: 8px; margin: 8px 0;">
-
-    <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">Entrar</button>
-  </form>
-  <p id="mensajeLogin" style="margin-top: 12px; text-align: center;"></p>
-</section>
 
 
 

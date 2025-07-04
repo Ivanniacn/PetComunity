@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendar Cita Veterinaria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #dfe6e9;
+            padding: 40px;
+        }
+        .grid {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+        .panel {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .panel h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            background: #00b894;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .btn-submit:hover {
+            background: #019875;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background: #74b9ff;
+            color: white;
+        }
+        .message {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .left {
+            flex: 1.2;
+        }
+        .right {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <!-- Sección izquierda: tabla de citas -->
+        <div class="panel left">
+            <h2>Mis Citas</h2>
+            {% if citas_usuario %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mascota</th>
+                            <th>Veterinario</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cita in citas_usuario %}
+                            <tr>
+                                <td>{{ cita.nombre_mascota }}</td>
+                                <td>{{ cita.veterinario.nombre }}</td>
+                                <td>{{ cita.fecha }}</td>
+                                <td>{{ cita.hora|time:"H:i" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p style="text-align: center;">No tienes citas agendadas.</p>
+            {% endif %}
+        </div>
+
+        <a href="/" class="btn-home"><button type="button" class="btn-submit">← Volver al inicio</button>
+        </a>
+
+
+        <div class="panel right">
+            <h2>Reservar Nueva Cita</h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="nombre_mascota">Nombre de la Mascota</label>
+                    <input type="text" name="nombre_mascota" id="nombre_mascota" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_mascota">Tipo de Mascota</label>
+                    <select name="tipo_mascota" id="tipo_mascota" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Conejo">Conejo</option>
+                        <option value="Ave">Ave</option>
+                        <option value="Reptil">Reptil</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" name="fecha" id="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hora">Hora</label>
+                    <input type="time" name="hora" id="hora" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="veterinario">Veterinario</label>
+                    <select name="veterinario" id="veterinario" required>
+                        <option value="">Seleccionar...</option>
+                        {% for vet in veterinarios %}
+                            <option value="{{ vet.id }}">{{ vet.nombre }} - {{ vet.especialidad }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Motivo de la Consulta</label>
+                    <textarea name="motivo" id="motivo" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmar Cita</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
